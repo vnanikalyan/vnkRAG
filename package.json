@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "fastify": "^4.26.2",
     "form-data": "^4.0.0",
     "llamaindex": "^0.2.8"
   },

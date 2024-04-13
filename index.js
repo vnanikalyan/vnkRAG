@@ -1,7 +1,12 @@
+import Fastify from 'fastify'
+const fastify = Fastify({
+  logger: true
+})
+
 import { QdrantVectorStore } from 'llamaindex'
 import LoadData from './loadData.js'
 
-const vectorStore = new QdrantVectorStore({ url: 'http://localhost:6333' })
+const vectorStore = new QdrantVectorStore({ url: process.env.vector_database_url })
 
 async function main () {
   // 1.Load Data
@@ -10,3 +15,12 @@ async function main () {
 }
 
 main()
+
+// Run the server!
+try {
+  await fastify.listen({ port: process.env.fastify_port })
+  console.log('Server listening at port - ', process.env.fastify_port)
+} catch (err) {
+  fastify.log.error(err)
+  process.exit(1)
+}

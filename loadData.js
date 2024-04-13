@@ -3,7 +3,11 @@ import {
   Document,
   PDFReader,
   VectorStoreIndex,
-  Settings
+  Settings,
+  SimpleDirectoryReader,
+  DocxReader,
+  HTMLReader,
+  ImageReader
 } from 'llamaindex'
 import fs from 'fs/promises'
 import path from 'path'
@@ -46,8 +50,23 @@ class LoadData {
         readData = await pdfReader.loadData(filePath)
         document = new Document({ text: readData, id_: 'pdf' })
         break
-      default:
+      case '.docx':
+        const docxReader = new DocxReader()
+        readData = await docxReader.loadData(filePath)
+        document = new Document({ text: readData, id_: 'docx' })
         break
+      case '.html':
+        const htmlReader = new HTMLReader()
+        readData = await htmlReader.loadData(filePath)
+        document = new Document({ text: readData, id_: 'html' })
+        break
+      case '.png':
+        const imageReader = new ImageReader()
+        readData = await imageReader.loadData(filePath)
+        document = new Document({ text: readData, id_: 'image' })
+        break
+      default:
+        return 'Unsupported file extension.'
     }
 
     try {
