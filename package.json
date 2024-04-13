@@ -1,0 +1,28 @@
+{
+  "name": "vnkrag",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:fix": "standard . --fix",
+    "cost": "npx cost-of-modules --no-install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "form-data": "^4.0.0",
+    "llamaindex": "^0.2.8"
+  },
+  "devDependencies": {
+    "standard": "^17.1.0"
+  },
+  "standard": {
+    "ignore": [
+      "node_modules",
+      "*.txt"
+    ]
+  }
+}
