@@ -7,7 +7,10 @@ import {
   SimpleDirectoryReader,
   DocxReader,
   HTMLReader,
-  ImageReader
+  ImageReader,
+  TitleExtractor,
+  QuestionsAnsweredExtractor,
+  IngestionPipeline
 } from 'llamaindex'
 import fs from 'fs/promises'
 import path from 'path'
@@ -79,6 +82,7 @@ class LoadData {
         console.log('Error storing document in vector store.', err)
     }
   }
+  
 }
 
 export default LoadData

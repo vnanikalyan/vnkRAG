@@ -5,13 +5,15 @@ const fastify = Fastify({
 
 import { QdrantVectorStore } from 'llamaindex'
 import LoadData from './loadData.js'
+import 'dotenv/config'
 
-const vectorStore = new QdrantVectorStore({ url: process.env.vector_database_url })
+const vectorStore = new QdrantVectorStore({ url: process.env.vector_database_url})
 
 async function main () {
   // 1.Load Data
   const loadData = new LoadData(vectorStore)
-  await loadData.fileToDocs()
+  // await loadData.fileToDocs()
+  await loadData.vnk()
 }
 
 main()
